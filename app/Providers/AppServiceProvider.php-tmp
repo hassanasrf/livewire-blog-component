@@ -1,0 +1,28 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\kkc\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider {
+	/**
+	 * Register any application services.
+	 *
+	 * @return void
+	 */
+	public function register() {
+		//
+	}
+
+	/**
+	 * Bootstrap any application services.
+	 *
+	 * @return void
+	 */
+	public function boot() {
+		Schema::defaultStringLength(191);
+	}
+}

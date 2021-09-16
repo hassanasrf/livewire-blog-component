@@ -1,0 +1,34 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\kkc\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+namespace App\Http\Livewire;
+
+use App\Blog;
+use Livewire\Component;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+
+class BlogComponent extends Component {
+	public $blog_title;
+	public $slug;
+
+	public function render() {
+		$blogs = Blog::latest()->take(7)->get();
+		return view('livewire.blog-component', compact('blogs'));
+	}
+
+	public function generateSlug() {
+		$this->slug = SlugService::createSlug(Blog::class , 'slug', $this->blog_title);
+	}
+
+	public function store() {
+		try {
+			Blog::create([
+					'blog_title' => $this->blog_title,
+					'slug'       => $this->slug
+				]);
+		} catch (\Exception $e) {
+
+			return $e->getMessage();
+		}
+	}
+}

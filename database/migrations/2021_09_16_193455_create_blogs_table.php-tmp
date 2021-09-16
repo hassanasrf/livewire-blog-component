@@ -1,0 +1,32 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\kkc\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBlogsTable extends Migration {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up() {
+		Schema::create('blogs', function (Blueprint $table) {
+				$table->id();
+				$table->string('blog_title');
+				$table->string('slug');
+				$table->timestamps();
+			});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down() {
+		Schema::dropIfExists('blogs');
+	}
+}

@@ -1,0 +1,26 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\kkc\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+
+namespace App;
+use Cviebrock\EloquentSluggable\Sluggable;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Blog extends Model {
+	use Sluggable;
+
+	protected $fillable = [
+		'blog_title',
+		'slug',
+	];
+
+	public function sluggable():array
+	{
+		return [
+			'slug'    => [
+				'source' => 'blog_title'
+			]
+		];
+	}
+}
